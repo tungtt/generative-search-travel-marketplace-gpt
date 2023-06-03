@@ -35,7 +35,7 @@ def respond_chat_completion():
     organization = request.values.get('organization')
     user_id = request.values.get('uid')
     user_query = request.values.get('query')
-    if user_id not in completion_handles:
+    if user_id not in chat_completion_handles:
         new_chat_completion_handle = openai_wrapper.chat_completion_wrapper(api_key, organization)
         chat_completion_handles[user_id] = new_chat_completion_handle
     return chat_completion_handles[user_id].respond_chat_completion(user_query)
